@@ -1,11 +1,15 @@
-import './Body.css';
+import { Route, Routes } from "react-router-dom"
+import { Home } from "../Home/Home";
+import { Register } from "../Resgister/Register";
 
 export const Body = () => {
 
-
-
-
-    return (
-        <div className="miDiv">Hola Mundo soy un div de prueba en body</div>
+    return(
+        <>
+            <Routes>
+                <Route path="/" element = {<Home />}/>
+                <Route path="/register" element = {<Register/>}/>
+            </Routes>
+        </>
     )
 }
