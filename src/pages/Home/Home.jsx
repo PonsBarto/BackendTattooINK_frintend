@@ -3,25 +3,21 @@ import "./Home.css"
 
 export const Home = () => {
 
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('')
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+  });
 
   const inputHandler = (event) => {
-    const inputName = event.target.name
-    const inputValue = event.target.value
-
-    if (inputName ==='name'){
-        setUserName(inputValue)
-    }
-    if (inputName ==='email'){
-        setUserEmail(inputValue)
-    }
-  };
+    setUserData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value
+    }))
+  }
 
   useEffect(() => {
-        console.log(userName, 'name');
-        console.log(userEmail, 'email');
-  }, [userName, userEmail])
+        console.log(userData, 'userdata esta funcionando')
+  }, [userData])
 
 
   return (
