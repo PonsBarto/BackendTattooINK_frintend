@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Home.css"
+import { CustomInput } from "../../components/CustomInput/CustomInput.JSX";
+
+
 
 export const Home = () => {
 
   const [userData, setUserData] = useState({
     name: '',
     email: '',
+    password: '',
   });
 
   const inputHandler = (event) => {
@@ -22,8 +26,9 @@ export const Home = () => {
 
   return (
     <div className="miDiv">
-      <input type="text" name="name" placeholder="insert your name" onChange={(e) => inputHandler(e)}></input>
-      <input type="email" name="email" placeholder="insert your email" onChange={(e) => inputHandler(e)}></input>
+      <CustomInput type={"text"} name={"name"} handler={inputHandler}></CustomInput>
+      <CustomInput type={"email"} name={"email"} handler={inputHandler}></CustomInput>
+      <CustomInput type={"password"} name={"password"} handler={inputHandler}></CustomInput>
     </div>
   );
 };
