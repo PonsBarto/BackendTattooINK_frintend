@@ -1,7 +1,31 @@
-export const Register = () => {
-    
+import { useEffect, useState } from "react";
+import { CustomInput } from "../../components/CustomInput/CustomInput.JSX";
 
-        return(
-            <h1>Hola, aqui te puedes registrar</h1>
-        )
+export const Register = () => {
+      
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const inputHandler = (event) => {
+    setUserData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value
+    }))
+  }
+
+  useEffect(() => {
+        console.table(userData)
+  }, [userData])
+
+
+  return (
+    <div className="miDiv">
+      <CustomInput type={"text"} name={"name"} handler={inputHandler}></CustomInput>
+      <CustomInput type={"email"} name={"email"} handler={inputHandler}></CustomInput>
+      <CustomInput type={"password"} name={"password"} handler={inputHandler}></CustomInput>
+    </div>
+  );
 }

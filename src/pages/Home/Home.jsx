@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Home.css"
 import { CustomInput } from "../../components/CustomInput/CustomInput.JSX";
-
-
+import { bringAllCharacters } from "../../services/apiCalls";
 
 export const Home = () => {
 
@@ -19,8 +18,12 @@ export const Home = () => {
     }))
   }
 
+  const buttonHamdler = () => {
+    bringAllCharacters()
+  };
+
   useEffect(() => {
-        console.log(userData, 'userdata esta funcionando')
+        console.table(userData)
   }, [userData])
 
 
@@ -29,6 +32,7 @@ export const Home = () => {
       <CustomInput type={"text"} name={"name"} handler={inputHandler}></CustomInput>
       <CustomInput type={"email"} name={"email"} handler={inputHandler}></CustomInput>
       <CustomInput type={"password"} name={"password"} handler={inputHandler}></CustomInput>
+      <div className="apiCallButton" onClick={buttonHamdler}></div>
     </div>
   );
 };
