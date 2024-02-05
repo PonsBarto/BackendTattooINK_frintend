@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import "./Home.css";
+import "./Users.css";
 import { CustomInput } from "../../components/CustomInput/CustomInput.JSX";
 import { bringAllCharacters } from "../../services/apiCalls";
 import { UserCard } from "../../components/UserCard/UserCard";
 
-export const Home = () => {
+export const Users = () => {
   const [characters, setCharacters] = useState([]);
   const [userData, setUserData] = useState({
     name: "",
