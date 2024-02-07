@@ -1,8 +1,10 @@
 import axios from "axios";
 
-//llamada a la api para obtener los datos de los personajes
+
+const API_URL = "https://localhost:3000"
+
 export const bringAllCharacters = async () => {
-    const res = await axios.get("https://rickandmortyapi.com/api/character");
+    const res = await axios.get(`${API_URL}/character`);
     return res.data.results;
 }
 

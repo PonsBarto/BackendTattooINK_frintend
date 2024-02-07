@@ -1,20 +1,68 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Header.css";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userRdxData = useSelector(userData);
+  console.log(userRdxData, "soy redux data en header");
+
+  const token = userRdxData.credentials ? userRdxData.credentials.token : null;
+
+  const decoded = userRdxData.credentials
+    ? userRdxData.credentials.userData
+    : null;
+  
+
+  const logMeOut = () => {
+    dispatch(logout({ credentials: {} }));
+    setTimeout(() => {
+      navigate();
+    });
+  };
   return (
-    <>
-      <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
-          <Navbar.Brand href="/home">Backend Tattoo INK</Navbar.Brand>
+    <Navbar expand="lg" data-bs-theme="dark" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="">BACKEND TATTOO INK</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Nosotros</Nav.Link>
-            <Nav.Link href="/Users">Users</Nav.Link>
-            <Nav.Link href="#pricing">Login</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="#link">Tatuadores</Nav.Link>
+            <NavDropdown title="Perfil" id="basic-nav-dropdown">
+              {!token ? (
+                <>
+                  <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.1">
+                    Register
+                  </NavDropdown.Item>
+                </>
+              ) : (
+                <>
+                  <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.1">
+                    Mis Citas
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    Log Out
+                  </NavDropdown.Item>
+                </>
+              )}
+            </NavDropdown>
           </Nav>
-        </Container>
-      </Navbar>
-    </>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
