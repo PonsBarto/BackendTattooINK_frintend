@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://localhost:3000";
+const API_URL = "http://localhost:3000";
 
 export const bringAllCharacters = async () => {
   const res = await axios.get(`${API_URL}/character`);
@@ -11,6 +11,7 @@ export const bringAllArtist = async () => {
   const res = await axios.get(`${API_URL}/artist`);
   return res.data;
 };
+
 export const getArtistById = async (id) => {
   const res = await axios.get(`${API_URL}/artist/${id}`);
   return res.data;
@@ -26,7 +27,7 @@ export const userLogin = async (credentials) => {
     const token = res.data.token;
     return token;
   } catch (error) {
-    console.error("Error en el login:", error);
+    console.error("Login Error:", error);
     throw error;
   }
 };
@@ -34,9 +35,10 @@ export const userLogin = async (credentials) => {
 export const getProfile = async (token) => {
   const config = {
     headers: {
-      Authorizarition: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
   };
-  const res = await axios.get(`${API_URL}/users/profile`, config);
+  console.log(config, "log de api");
+  const res = await axios.get(`${API_URL}/api/users/profile2`, config);
   return res.data;
 };
