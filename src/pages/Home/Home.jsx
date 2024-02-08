@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
-import { CustomInput } from "../../components/CustomInput/CustomInput.JSX";
+import { InputLogin } from "../../components/LoginInput/LoginInput";
 import { bringAllCharacters } from "../../services/apiCalls";
-import { UserCard } from "../../components/UserCard/UserCard";
+import { ArtistCard } from "../../components/ArtistCard/ArtistCard";
 
 export const Home = () => {
   const [characters, setCharacters] = useState([]);
@@ -34,21 +34,21 @@ export const Home = () => {
 
   return (
     <div className="miDiv">
-      <CustomInput
+      <InputLogin
         type={"text"}
         name={"name"}
         handler={inputHandler}
-      ></CustomInput>
-      <CustomInput
+      ></InputLogin>
+      <InputLogin
         type={"email"}
         name={"email"}
         handler={inputHandler}
-      ></CustomInput>
-      <CustomInput
+      ></InputLogin>
+      <InputLogin
         type={"password"}
         name={"password"}
         handler={inputHandler}
-      ></CustomInput>
+      ></InputLogin>
       <h1>{userData.name}</h1>
       <div className="apiCallButton" onClick={buttonHamdler}></div>
       <div className="UserContainer">
@@ -56,11 +56,11 @@ export const Home = () => {
           <>
             {characters.map((char) => {
               return (
-                <UserCard
+                <ArtistCard
                   id={char.id}
                   image={char.image}
                   name={char.name}
-                ></UserCard>
+                ></ArtistCard>
               );
             })}
           </>

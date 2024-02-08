@@ -1,6 +1,6 @@
-import "./UserCard.css"
+import "./ArtistCard.css"
 
-export const UserCard = ({id, image, name}) => {
+export const ArtistCard = ({id, image, name}) => {
 
     return (
         <div className="user-card" key={id}>
