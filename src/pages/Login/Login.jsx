@@ -33,7 +33,7 @@ export const Login = () => {
         };
         dispatch(login({ credentials: data }));
       })
-      .catch((err) => console.error("error en linea 36", err));
+      .catch((err) => console.log("Error al iniciar sesión", err));
   };
 
   useEffect(() => {
