@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Login.css";
-import { InputLogin } from "../../Components/InputLogin/inputLogin";
+import { LoginInput } from "../../components/LoginInput/LoginInput";
 import { userLogin } from "../../services/apiCalls";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";

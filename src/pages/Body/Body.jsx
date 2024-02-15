@@ -3,7 +3,8 @@ import { Home } from "../Home/Home";
 import { Register } from "../Register/Register";
 import { Tatuadores } from "../Tatuadores/Tatuadores";
 import { Login } from "../Login/Login";
-import { Profil } from "../Profile/Profile";
+import { Profile } from "../Profile/Profile"
+
 
 export const Body = () => {
   return (
@@ -14,7 +15,7 @@ export const Body = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} />
         <Route path="/tatuadores" element={<Tatuadores />} />
-        <Route path="/profil" element={<Profil />} />
+        <Route path="/profil" element={<Profile />} />
       </Routes>
     </>
   );

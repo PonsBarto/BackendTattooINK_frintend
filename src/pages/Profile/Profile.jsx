@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
-import { getProfile } from "../../services/apiCalls"; 
-import { InputLogin } from "../../Components/InputLogin/inputLogin";
+import { getProfile } from "../../services/apiCalls";
+import { LoginInput } from "../../components/LoginInput/LoginInput";
+import { useSelector } from "react-redux";
+import { userData } from "../userSlice";
+import { jwtDecode } from "jwt-decode";
+import moment from "moment";
+
+
 export const Profile = () => {
   const navigate = useNavigate();
   const [profileData, setProfileData] = useState({});

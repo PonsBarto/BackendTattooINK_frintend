@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Register.css";
-import { InputLogin } from "../../Components/InputLogin/inputLogin";
+import { LoginInput } from "../../components/LoginInput/LoginInput";
 import { bringAllCharacters } from "../../services/apiCalls";
 export const Register = () => {
   const [characters, setCharacters] = useState([]);

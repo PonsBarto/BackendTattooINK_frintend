@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
-import { InputLogin } from "../../components/LoginInput/LoginInput";
+import { LoginInput } from "../../components/LoginInput/LoginInput";
 import { bringAllCharacters } from "../../services/apiCalls";
 import { ArtistCard } from "../../components/ArtistCard/ArtistCard";
 

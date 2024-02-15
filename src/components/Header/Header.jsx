@@ -5,8 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -40,7 +39,9 @@ export const Header = () => {
               ) : (
                 <>
                   <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.1">Mis Citas</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.1">
+                    Mis Citas
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item
                     onClick={() => {
