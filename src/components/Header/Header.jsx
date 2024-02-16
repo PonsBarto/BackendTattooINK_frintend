@@ -13,7 +13,8 @@ export const Header = () => {
   const userRdxData = useSelector(userData);
 
   const token = userRdxData.credentials ? userRdxData.credentials.token : null;
-  const decoded = userRdxData.credentials.userData;
+  const decoded = userRdxData.credentials? userRdxData.credentials.userData 
+  : null;
 
   const logMeOut = () => {
     dispatch(logout({ credentials: {} }));
