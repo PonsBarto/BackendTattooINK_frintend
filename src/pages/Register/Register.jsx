@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Register.css";
 import { LoginInput } from "../../components/LoginInput/LoginInput";
 import { bringAllCharacters } from "../../services/apiCalls";
+
 export const Register = () => {
   const [characters, setCharacters] = useState([]);
   const [userData, setUserData] = useState({
@@ -9,45 +10,48 @@ export const Register = () => {
     email: "",
     password: "",
   });
+
   const inputHandler = (event) => {
     setUserData((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
   };
+
   const buttonHandler = () => {
-    bringAllCharacters().then((characters) => {
-      setCharacters(characters);
-    });
+    bringAllCharacters()
+      .then((characters) => {
+        setCharacters(characters);
+      })
+      .catch((error) => {
+        console.error("Error fetching characters:", error);
+      });
   };
-  useEffect(() => {
-    console.log(characters);
-  }, [characters]);
-  useEffect(() => {}, [userData]);
+
   return (
     <div className="login">
       <div className="loginDiv">
         <div className="input">
-          <div class="inputBox">
+          <div className="inputBox">
             <label>NOMBRE</label>
-            <InputLogin
-              type={"text"}
-              name={"name"}
+            <LoginInput
+              type="text"
+              name="name"
               handler={inputHandler}
-            ></InputLogin>
+            />
             <label>EMAIL</label>
-            <InputLogin
-              type={"email"}
-              name={"email"}
+            <LoginInput
+              type="email"
+              name="email"
               handler={inputHandler}
-            ></InputLogin>
+            />
             <label>CONTRASEÑA</label>
-            <InputLogin
-              type={"password"}
-              name={"password"}
+            <LoginInput
+              type="password"
+              name="password"
               handler={inputHandler}
-            ></InputLogin>
-            <input type="submit" name="" value="Registrarse"></input>
+            />
+            <input type="submit" value="Registrarse" onClick={buttonHandler}></input>
             <h1>{userData.name}</h1>
           </div>
         </div>

@@ -47,17 +47,17 @@ export const Login = () => {
         <div className="input">
           <div className="inputBox">
             <label>EMAIL</label>
-            <InputLogin
+            <LoginInput
               type={"email"}
               name={"email"}
               handler={inputHandler}
-            ></InputLogin>
+            ></LoginInput>
             <label>CONTRASEÑA</label>
-            <InputLogin
+            <LoginInput
               type={"password"}
               name={"password"}
               handler={inputHandler}
-            ></InputLogin>
+            ></LoginInput>
             <input
               type="submit"
               name=""
