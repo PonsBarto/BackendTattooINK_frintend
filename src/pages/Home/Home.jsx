@@ -34,21 +34,21 @@ export const Home = () => {
 
   return (
     <div className="miDiv">
-      <InputLogin
+      <LoginInput
         type={"text"}
         name={"name"}
         handler={inputHandler}
-      ></InputLogin>
-      <InputLogin
+      ></LoginInput>
+      <LoginInput
         type={"email"}
         name={"email"}
         handler={inputHandler}
-      ></InputLogin>
-      <InputLogin
+      ></LoginInput>
+      <LoginInput
         type={"password"}
         name={"password"}
         handler={inputHandler}
-      ></InputLogin>
+      ></LoginInput>
       <h1>{userData.name}</h1>
       <div className="apiCallButton" onClick={buttonHamdler}></div>
       <div className="UserContainer">
