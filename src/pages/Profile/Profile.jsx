@@ -42,32 +42,33 @@ export const Profile = () => {
       <h1 className="">{profileData.profileUser?.username}</h1>
       <button onClick={() => buttonHandler()}></button>
       {isEditing ? (
-        <InputLogin
+        <LoginInput
           name="firstName"
           type="text"
           handler={inputHandler}
-        ></InputLogin>
+        ></LoginInput>
       ) : null}
 
       <h2>{profileData.profileUser?.name}</h2>
       <h2>{profileData.profileUser?.surname}</h2>
       <p>{profileData.profileUser?.email}</p>
 
-      {profileData.userArtistProfiles &&
-        profileData.userArtistProfiles.map((userArtistProfiles) => (
+      {profileData.userArtistProfiles && profileData.userArtistProfiles.map((userArtistProfiles) => (
           <div key={userArtistProfiles.id}>
             <p>{userArtistProfiles.name}</p>
           </div>
         ))}
-      {profileData.appointments &&
-        profileData.appointments.map((appointment) => (
-          <div key={appointment.id}>
-            {appointment.date ? (
-              <p>{moment(appointment.date).format("DD-MM-YYYY")}</p>
-            ) : null}
-            <p>{appointment?.hour}</p>
-          </div>
-        ))}
-    </div>
+        {profileData.appointments &&
+          profileData.appointments.map((appointment) => (
+            <div key={appointment.id}>
+              {appointment.date ? (
+                <p>{moment(appointment.date).format("DD-MM-YYYY")}</p>
+              ) : null}
+              <p>{appointment?.hour}</p>
+            </div>
+          ))}
+
+
+    </div >
   );
 };
