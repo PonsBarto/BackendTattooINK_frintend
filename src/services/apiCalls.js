@@ -1,4 +1,5 @@
 import axios from "axios";
+import bcrypt from "bcryptjs";
 
 const API_URL = "http://localhost:3000";
 
@@ -8,7 +9,7 @@ export const bringAllCharacters = async () => {
 };
 
 export const bringAllArtist = async () => {
-  const res = await axios.get(`${API_URL}/artist`);
+  const res = await axios.get(`${API_URL}/api/artist`);
   return res.data;
 };
 
@@ -18,6 +19,11 @@ export const getArtistById = async (id) => {
 };
 export const bringAllUsers = async () => {
   const res = await axios.get(`${API_URL}/users`);
+  return res.data;
+};
+
+export const createNewUser = async (registerData) => {
+  const res = await axios.post(`${API_URL}/auth/register`, registerData);
   return res.data;
 };
 
