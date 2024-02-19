@@ -1,12 +1,8 @@
 import axios from "axios";
-import bcrypt from "bcryptjs";
+
 
 const API_URL = "http://localhost:3000";
 
-export const bringAllCharacters = async () => {
-  const res = await axios.get(`${API_URL}/character`);
-  return res.data.results;
-};
 
 export const bringAllArtist = async () => {
   const res = await axios.get(`${API_URL}/api/artist`);
@@ -44,7 +40,17 @@ export const getProfile = async (token) => {
       Authorization: "Bearer " + token,
     },
   };
-  console.log(config, "log de api");
   const res = await axios.get(`${API_URL}/api/users/profile2`, config);
   return res.data;
+}
+export const updateUser = async (token, updateData) => {
+    const config = {
+        headers: {
+            Authorization: "Bearer " + token
+        },
+    };
+
+    const res = await axios.patch(`${API_URL}/api/users/`,updateData, config);
+
+    return res.data;
 };

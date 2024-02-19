@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArtistCard } from "../../Components/ArtistCard/ArtistCard";
+import { ArtistCard } from "../../components/ArtistCard/ArtistCard";
 import { bringAllArtist } from "../../Services/ApiCalls";
 import "./Tatuadores.css";
 import { useNavigate } from "react-router-dom";

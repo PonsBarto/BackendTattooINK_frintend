@@ -1,0 +1,48 @@
+.CardAppointment, .appointment-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    margin-top: 10%; 
+    color: #FFF;
+    line-height: 1.5em;
+    background: #0f1d2b; 
+    border: 1px solid #9e8839; 
+    padding: 40px 40px 60px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.CardAppointment::before, .appointment-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    background: linear-gradient(135deg, #ffd700, #1a237e); 
+    z-index: -1;
+    border-radius: 12px;
+}
+
+.CardAppointment:hover, .appointment-card:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #9e8839; 
+    cursor: pointer;
+    z-index: 10;
+}
+
+.CardAppointment h3, .appointment-card h3 {
+    font-size: clamp(20px, 4vw, 30px);
+    margin-bottom: 5px;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    color: #ffd700; 
+}
+
