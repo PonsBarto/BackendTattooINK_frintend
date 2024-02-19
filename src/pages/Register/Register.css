@@ -1,83 +1,77 @@
 body {
-    height: 100vh;
-    background: #3e2723; /* Un marrón oscuro, reminiscente de madera o cuero antiguo */
+  height: 100vh;
+  background: #0d1b2a; /* Fondo azul marino oscuro */
 }
 
 .login {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .loginDiv {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    background: #4e342e; /* Cambiamos a un color sólido para simular pergaminos o cuero */
-    border: 1px solid #3e2723; /* Un borde más oscuro para dar profundidad */
-    width: 350px;
-    padding: 40px 40px 60px;
-    border-radius: 10px; /* Podemos mantener el borde redondeado para suavidad */
-    text-align: center;
-    margin-top: 5%;
-    font-family: 'Times New Roman', Times, serif; /* Usamos una fuente con aire medieval */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #0d1b2a; /* Fondo del contenedor ajustado al azul marino oscuro */
+  border: 1px solid #9e8839; /* Borde dorado */
+  width: 350px;
+  padding: 40px 40px 60px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 5%;
+  font-family: "Times New Roman", Times, serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Sombra para añadir profundidad */
 }
 
 .loginDiv::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    bottom: -2px;
-    left: -2px;
-    background: #5d4037; /* Un fondo más neutro y menos moderno */
-    z-index: -1;
-    transform: skew(0deg, 0deg); /* Eliminamos la inclinación para una apariencia más tradicional */
-    border-radius: 10px;
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  background: #0d1b2a; /* Azul marino para la capa detrás del borde */
+  z-index: -1;
+  border-radius: 10px;
 }
 
 .loginDiv .input {
-    margin-top: 40px;
-    text-align: left;
+  margin-top: 40px;
+  text-align: left;
 }
 
 .loginDiv .input .inputBox {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .loginDiv .input .inputBox label {
-    display: block;
-    color: #d7ccc8; /* Un color claro para contraste, pero suave */
-    margin-bottom: 5px;
-    font-size: 18px;
-    letter-spacing: normal; /* Mantenemos el espaciado normal para legibilidad */
+  display: block;
+  color: #9e8839;
+  margin-bottom: 5px;
+  font-size: 18px;
+  letter-spacing: normal;
 }
 
 .loginDiv .input .inputBox input {
-    position: relative;
-    width: 100%;
-    height: 40px;
-    border: 1px solid #3e2723; /* Un borde sutil */
-    outline: none;
-    padding: 5px;
-    background: #6d4c41; /* Un fondo más suave y neutral */
-    color: #fff;
-    font-size: 18px;
-    border-radius: 10px; /* Podemos mantenerlo para un toque moderno */
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #9e8839;
+  outline: none;
+  padding: 5px;
+  background: #0d1b2a;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 9px;
 }
 
 .loginDiv .input .inputBox input[type="submit"] {
-    cursor: pointer;
-    margin-top: 20px;
-    background: #5d4037; /* Un color más acorde al tema medieval para el botón */
-    border: 1px solid #3e2723; /* Definimos un borde para darle profundidad */
-    letter-spacing: normal; /* Eliminamos el espaciado adicional */
-}
-
-.loginDiv .input .inputBox input[type="submit"]:hover {
-    background: #4e342e; /* Oscurecemos el botón al pasar el cursor para contraste */
-}
-
-.loginDiv .input .inputBox input[type="submit"]:active {
-    color: #d7ccc8; /* Un color claro para el clic */
-    background: #3e2723; /* Un color más oscuro para el estado activo */
+  cursor: pointer;
+  margin-top: 20px;
+  background: #9e8839;
+  color: #0d1b2a;
+  border: none;
+  letter-spacing: normal;
+  font-weight: bold;
+  border-radius: 12px;
 }
