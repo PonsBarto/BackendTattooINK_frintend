@@ -20,7 +20,7 @@ export const Header = () => {
   const logMeOut = () => {
     dispatch(logout({ credentials: {} }));
     setTimeout(() => {
-      navigate();
+      navigate('/Home');
     });
   };
   return (
