@@ -1,4 +1,5 @@
 import axios from "axios";
+import bcrypt from 'bcryptjs';
 
 
 const API_URL = "http://localhost:3000";

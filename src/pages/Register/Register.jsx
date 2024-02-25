@@ -3,7 +3,7 @@ import "./Register.css";
 import { LoginInput } from "../../components/LoginInput/LoginInput";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createNewUser, userLogin } from "../../Services/ApiCalls";
+import { createNewUser, userLogin } from "../Services/apiCalls";
 import { login, userData } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
 

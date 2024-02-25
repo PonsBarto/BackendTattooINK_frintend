@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background: #0d1b2a; /* Fondo azul marino oscuro */
+  background: #0d1b2a;
 }
 
 .login {
@@ -12,15 +12,15 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #0d1b2a; /* Fondo del contenedor ajustado al azul marino oscuro */
-  border: 1px solid #9e8839; /* Borde dorado */
+  background: #0d1b2a; 
+  border: 1px solid #9e8839; 
   width: 350px;
   padding: 40px 40px 60px;
   border-radius: 10px;
   text-align: center;
   margin-top: 5%;
   font-family: "Times New Roman", Times, serif;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Sombra para añadir profundidad */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); 
 }
 
 .loginDiv::before {
@@ -30,7 +30,7 @@ body {
   right: -2px;
   bottom: -2px;
   left: -2px;
-  background: #0d1b2a; /* Azul marino para la capa detrás del borde */
+  background: #0d1b2a; 
   z-index: -1;
   border-radius: 10px;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArtistCard } from "../../components/ArtistCard/ArtistCard";
-import { bringAllArtist } from "../../Services/ApiCalls";
+import { bringAllArtist } from "../Services/ApiCalls";
 import "./Tatuadores.css";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
@@ -53,7 +53,7 @@ export const Tatuadores = () => {
             );
           })
         ) : (
-          <p>No hay artistas para mostrar.</p>
+          <p>There are no artists to show.</p>
         )}
       </div>
     </>
