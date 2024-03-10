@@ -52,6 +52,9 @@ export const Header = () => {
                   <NavDropdown.Item href="users">
                     Users
                   </NavDropdown.Item>
+                  <NavDropdown.Item href="allappointments">
+                    all appointments
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/" onClick={() => logMeOut()}>
                     Log out
@@ -60,7 +63,7 @@ export const Header = () => {
               ) : decoded.userRoles === "artist" ? (
                 <>
                   <NavDropdown.Item href="profile">Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="appointments">
+                  <NavDropdown.Item href="myappointments">
                     My Appointments
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
