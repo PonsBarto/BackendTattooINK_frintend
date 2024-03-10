@@ -26,7 +26,7 @@ export const Artists = () => {
                 <ArtistCard
                   key={artist.id}
                   name={artist.name}
-                  // photo={artist.photo}
+                  photo={artist.photo}
                 />
               );
             })
