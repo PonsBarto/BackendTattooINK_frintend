@@ -33,7 +33,9 @@ export const Header = () => {
       id="navbar"
     >
       <Container className="container">
-        <Navbar.Brand href="/" className="ms-auto">Tattooink</Navbar.Brand>
+        <Navbar.Brand href="/" className="ms-auto">
+          Tattooink
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -49,7 +51,7 @@ export const Header = () => {
                 <>
                   <NavDropdown.Item href="profile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="appointments">
-                    Appointments
+                    Schedule an appointment
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/" onClick={() => logMeOut()}>

@@ -1,61 +1,70 @@
 .profileView {
-    background-color: red;
-    width: 100%;
-    height: 60%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 10%;
-    flex-wrap: wrap;
-  }
-  
-  .profilePhoto {
-    background-color: white;
-    width: 30%;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  img {
-    width: 50%;
-    height: 90%;
-    background-color: white;
-    border-radius: 50%;
-  }
-  
-  .profileInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: blue;
-    width: 60%;
-    height: 60%;
-    color: white;
-  }
-  
-  .profile-card {
-    background-color: #000c18; /* Color de fondo */
-    border: 1px solid #dee2e6; /* Borde */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-    padding: 20px; /* Espaciado interno */
-  }
-  
-  .profile-card-title {
-    color: #ffffff; /* Color del título */
-    font-size: 300%; /* Tamaño del título */
-    background-color: #000000;
-    font-family: "Gill Sans";
-    display: flex;
-    justify-content: center;
-    margin-top: -3%;
-  }
-  
-  .list-group-item {
-    background-color: #000c18;
-    color: #ffffff; /* Color del título */
-  }
+  background-color: red;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10%;
+  flex-wrap: wrap;
+}
+
+.profilePhoto {
+  background-color: white;
+  width: 30%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 50%;
+  height: 90%;
+  background-color: white;
+  border-radius: 50%;
+  margin-top: -10%;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  width: 60%;
+  height: 60%;
+  color: white;
+}
+
+.profile-card {
+  background-color: #000c18;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 0; 
+}
+
+.profile-card-title {
+  color: #ffffff; 
+  font-size: 300%; 
+  background-color: #000000;
+  font-family: "Gill Sans";
+  display: flex;
+  justify-content: center;
+  margin-top: -3%;
+}
+
+.list-group-item {
+  background-color: #000c18;
+  color: #ffffff; 
+}
+
+.body{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+}
