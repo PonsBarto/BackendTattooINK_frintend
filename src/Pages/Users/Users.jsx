@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { bringAllUsers } from "../../Services/apiCalls";
+import { bringAllUsers, removeUser } from "../../Services/apiCalls";
 import { useSelector } from "react-redux";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { userData } from "../userSlice";
 
 export const Users = () => {
@@ -16,6 +16,12 @@ export const Users = () => {
       });
     }
   }, []);
+
+  const removeButtonHandler = (id) => {
+    removeUser(token, id).then(() => {
+      setUsers(users.filter((user) => user.id !== id)); // Actualiza el estado excluyendo el usuario eliminado
+    });
+  };
 
   console.log(users);
   return (
@@ -32,6 +38,13 @@ export const Users = () => {
                   </Card.Title>
                   <Card.Text>{user.email}</Card.Text>
                   <Card.Text>{user.phone_number}</Card.Text>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => removeButtonHandler(user.id)}
+                  >
+                    Delete
+                  </Button>
                 </Card.Body>
               </Card>
             </div>
