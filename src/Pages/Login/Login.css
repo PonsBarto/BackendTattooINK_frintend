@@ -1,0 +1,16 @@
+.logInBox {
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    background: #200000;
+    border: 2px solid #6c0000;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 5%;
+    height: 60vh;
+    width: 90vw;
+}
