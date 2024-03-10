@@ -39,20 +39,20 @@ img {
 }
 
 .profile-card {
-  background-color: #000c18;
+  background-color: #000c18; 
   border-radius: 8px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 0; 
 }
 
 .profile-card-title {
   color: #ffffff; 
-  font-size: 300%; 
   background-color: #000000;
   font-family: "Gill Sans";
   display: flex;
   justify-content: center;
   margin-top: -3%;
+  font-size: 3.5rem;
 }
 
 .list-group-item {
