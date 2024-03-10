@@ -7,6 +7,7 @@ import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, userData } from "../../Pages/userSlice";
+import { useEffect } from "react";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -14,9 +15,7 @@ export const Header = () => {
   const userRdxData = useSelector(userData);
 
   const token = userRdxData.credentials ? userRdxData.credentials.token : null;
-  const decoded = userRdxData.credentials
-    ? userRdxData.credentials.userData
-    : null;
+  const decoded = userRdxData.credentials?.userData;
 
   const logMeOut = () => {
     dispatch(logout({ credentials: {} }));
@@ -46,6 +45,28 @@ export const Header = () => {
                 <>
                   <NavDropdown.Item href="login">Login</NavDropdown.Item>
                   <NavDropdown.Item href="register">Register</NavDropdown.Item>
+                </>
+              ) : decoded.userRoles === "super_admin" ? (
+                <>
+                  <NavDropdown.Item href="profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item href="users">
+                    Users
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/" onClick={() => logMeOut()}>
+                    Log out
+                  </NavDropdown.Item>
+                </>
+              ) : decoded.userRoles === "artist" ? (
+                <>
+                  <NavDropdown.Item href="profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item href="appointments">
+                    My Appointments
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/" onClick={() => logMeOut()}>
+                    Log out
+                  </NavDropdown.Item>
                 </>
               ) : (
                 <>

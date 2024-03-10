@@ -3,16 +3,15 @@ import {
   bringProfile,
   updateProfile,
   bringAppointments,
-  bringAllArtists,
+  updateAppointment,
+  DeleteAppointment,
 } from "../../Services/apiCalls";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 export const Profile = () => {
-  const navigate = useNavigate();
   const [profileData, setProfileData] = useState({});
   const userRdxData = useSelector(userData);
   const token = userRdxData.credentials.token;
@@ -29,14 +28,12 @@ export const Profile = () => {
       setEditableData(res);
     });
 
-    // Llamar a la función para traer las citas
     bringAppointments(token, myId)
       .then((appointments) => {
         setMyAppointments(appointments);
       })
       .catch((error) => {
         console.error("Error fetching appointments:", error);
-        // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
       });
   }, [token, myId]);
 
@@ -49,15 +46,14 @@ export const Profile = () => {
 
   const buttonHandler = () => {
     if (editMode) {
-      // Pasamos el ID del usuario junto con los datos actualizados
       updateProfile(token, myId, editableData)
         .then((updatedProfile) => {
           setProfileData(updatedProfile);
           setEditMode(false);
+          window.location.reload(); // Recargar la página después de actualizar el perfil
         })
         .catch((error) => {
           console.error("Error updating profile:", error);
-          // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
         });
     } else {
       setEditMode(true);
@@ -68,6 +64,41 @@ export const Profile = () => {
     setDetailsOpen(!detailsOpen);
   };
 
+  const handleEditAppointment = (index) => {
+    const appointmentsCopy = [...myAppointments];
+    appointmentsCopy[index].editable = true;
+    setMyAppointments(appointmentsCopy);
+  };
+
+  const handleSaveAppointment = (index) => {
+    const appointment = myAppointments[index];
+    const { id, date, time } = appointment;
+    updateAppointment(token, id, { date, time })
+      .then((updatedAppointment) => {
+        const updatedAppointments = [...myAppointments];
+        updatedAppointments[index] = { ...updatedAppointment, editable: false };
+        setMyAppointments(updatedAppointments);
+        window.location.reload(); // Recargar la página después de guardar el nuevo appointment
+      })
+      .catch((error) => {
+        console.error("Error updating appointment:", error);
+      });
+  };
+
+  const cancelButtonHandler = (id) => {
+    DeleteAppointment(token, id)
+      .then(() => {
+        // Eliminar la cita del estado local
+        const updatedAppointments = myAppointments.filter(
+          (appointment) => appointment.id !== id
+        );
+        setMyAppointments(updatedAppointments);
+      })
+      .catch((error) => {
+        console.error("Error deleting appointment:", error);
+      });
+  };
+  console.log();
   return (
     <>
       <div className="body">
@@ -194,17 +225,62 @@ export const Profile = () => {
               <Col key={index}>
                 <Card className="h-100">
                   <Card.Body>
-                    <Card.Title>Artist: {appointment.artist_id}</Card.Title>
+                    <Card.Title>Artist: {appointment.artist.name}</Card.Title>
                     <Card.Text>
-                      <div>
-                        <span className="font-weight-bold">Date:</span>{" "}
-                        {appointment.date}
-                      </div>
-                      <div>
-                        <span className="font-weight-bold">Time:</span>{" "}
-                        {appointment.time}
-                      </div>
+                      <span className="font-weight-bold">Date:</span>{" "}
+                      {appointment.editable ? (
+                        <Form.Control
+                          type="date"
+                          value={appointment.date}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            setMyAppointments((prevAppointments) =>
+                              prevAppointments.map((app, i) =>
+                                i === index ? { ...app, date: value } : app
+                              )
+                            );
+                          }}
+                        />
+                      ) : (
+                        appointment.date
+                      )}
+                      <br />
+                      <span className="font-weight-bold">Time:</span>{" "}
+                      {appointment.editable ? (
+                        <Form.Control
+                          type="time"
+                          value={appointment.time}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            setMyAppointments((prevAppointments) =>
+                              prevAppointments.map((app, i) =>
+                                i === index ? { ...app, time: value } : app
+                              )
+                            );
+                          }}
+                        />
+                      ) : (
+                        appointment.time
+                      )}
                     </Card.Text>
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        if (appointment.editable) {
+                          handleSaveAppointment(index);
+                        } else {
+                          handleEditAppointment(index);
+                        }
+                      }}
+                    >
+                      {appointment.editable ? "Save" : "Reschedule"}
+                    </Button>
+                    <Button
+                      variant="danger"
+                      onClick={() => cancelButtonHandler(appointment.id)}
+                    >
+                      Cancel
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>

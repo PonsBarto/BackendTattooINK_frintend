@@ -6,8 +6,6 @@ import { Profile } from "./Profile/Profile";
 import { Artists } from "./Artists/Artists";
 import { Appointments } from "./Appointments/Appointments";
 import { Users } from "./Users/Users";
-import { ArtistAppointments } from "./ArtistAppointments/ArtistAppointments";
-import { AllAppointments } from "./AllAppointments/AllAppointments";
 
 
 export const Body = () => {
@@ -22,8 +20,6 @@ export const Body = () => {
                 <Route path="/Artists" element={<Artists/>} />
                 <Route path="/Appointments" element={<Appointments/>} />
                 <Route path="/Users" element={<Users/>} />
-                <Route path="/myappointments" element={<ArtistAppointments/>} />
-                <Route path="/allappointments" element={<AllAppointments/>} />
 
             </Routes>
         </>
