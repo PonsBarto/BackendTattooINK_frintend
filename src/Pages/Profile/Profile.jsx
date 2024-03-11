@@ -223,7 +223,7 @@ export const Profile = () => {
           <Row xs={1} md={2} lg={3} className="g-4">
             {myAppointments.map((appointment, index) => (
               <Col key={index}>
-                <Card className="h-100">
+                <Card className="h-100" id="custom-card-profile">
                   <Card.Body>
                     <Card.Title>Artist: {appointment.artist.name}</Card.Title>
                     <Card.Text>

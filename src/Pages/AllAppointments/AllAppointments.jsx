@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { bringAllAppointments } from "../../Services/apiCalls";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { DeleteAppointment, bringAllAppointments } from "../../Services/apiCalls";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "./AllAppointments.css";
 
 export const AllAppointments = () => {
@@ -22,33 +22,29 @@ export const AllAppointments = () => {
     }
   }, [appointments, token]);
 
+  const removeButtonHandler = (id) => {
+    DeleteAppointment(token, id).then(() => {
+      setAppointments(appointments.filter((appointment) => appointment.id !== id));
+    });
+  };
+
   return (
     <Container>
       <h1 className="text-center mt-5 mb-4">Your Appointments</h1>
       <Row xs={1} md={2} lg={3} className="g-4">
         {appointments && appointments.length > 0 ? (
           appointments.map((appointment) => (
-            <Col
-              key={`${appointment.id}-${appointment.date}-${appointment.time}`}
-            >
+            <Col key={`${appointment.id}-${appointment.date}-${appointment.time}`}>
               <Card className="shadow-sm appointment-card" id="custom-card">
                 <Card.Body>
-                  <Card.Title className="text-center fs-5">
-                    Artist: {appointment.artist_name}
-                  </Card.Title>
+                  <Card.Title className="text-center fs-5">Artist: {appointment.artist_name}</Card.Title>
                   <hr />
                   <div className="text-center">
-                    <p>
-                      <strong>Date:</strong> {appointment.date}
-                    </p>
-                    <p>
-                      <strong>Time:</strong> {appointment.time}
-                    </p>
-                    <p>
-                      <strong>Customer:</strong> {appointment.user_name}{" "}
-                      {appointment.user_last_name}
-                    </p>
+                    <p><strong>Date:</strong> {appointment.date}</p>
+                    <p><strong>Time:</strong> {appointment.time}</p>
+                    <p><strong>Customer:</strong> {appointment.user_name} {appointment.user_last_name}</p>
                   </div>
+                  <Button variant="danger" size="sm" onClick={() => removeButtonHandler(appointment.id)}>Delete</Button>
                 </Card.Body>
               </Card>
             </Col>
