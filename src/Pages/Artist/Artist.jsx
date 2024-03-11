@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Artists.css";
+import { bringAllArtists } from "../../Services/apiCalls";
 
 export const Artists = () => {
   const [artists, setArtists] = useState([]);
