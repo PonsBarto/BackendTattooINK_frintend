@@ -1,20 +1,40 @@
 .team-title {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: center;
-  background-color: black;
-  margin: 0;
-  padding: 0;
+  text-align: center;
 }
 
-.artistContainer {
-  width: 100%;
-  height: 100vh;
-  background-color: black;
-  margin: 0em;
-  padding: 0em;
+.artist-container {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap; /* Agregar esta línea */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.artist-card {
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #101010;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.artist-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.artist-info {
+  display: flex;
+  justify-content: center;
+  color: rgb(161, 161, 161);
+}
+
+.artist-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.no-artists {
+  text-align: center;
 }

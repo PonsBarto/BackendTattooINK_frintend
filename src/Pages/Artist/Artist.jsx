@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { ArtistCard } from "../../Components/ArtistCard/ArtistCard";
-import { bringAllArtists } from "../../Services/apiCalls";
 import "./Artists.css";
 
 export const Artists = () => {
@@ -9,7 +7,7 @@ export const Artists = () => {
   useEffect(() => {
     if (artists.length === 0) {
       bringAllArtists().then((data) => {
-        setArtists(data); // Establece los datos directamente
+        setArtists(data);
       });
     }
   }, []);
@@ -17,19 +15,20 @@ export const Artists = () => {
   return (
     <>
       <h1 className="team-title">Meet the team</h1>
-      <div className="artistContainer">
+      <div className="artist-container">
         {artists && artists.length > 0 ? (
           artists.map((artist) => {
             return (
-              <ArtistCard
-                key={artist.id}
-                name={artist.name}
-                photo={artist.photo}
-              />
+              <div key={artist.id} className="artist-card">
+                <img src={artist.photo} alt={artist.name} className="artist-img" />
+                <div className="artist-info">
+                  <p className="artist-name">{artist.name}</p>
+                </div>
+              </div>
             );
           })
         ) : (
-          <p>No hay artistas para mostrar.</p>
+          <p className="no-artists">No hay artistas para mostrar.</p>
         )}
       </div>
     </>
