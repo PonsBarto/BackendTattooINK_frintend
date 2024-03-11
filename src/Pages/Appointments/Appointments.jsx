@@ -1,114 +1,60 @@
 import React, { useEffect, useState } from "react";
-import "./Appointments.css";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { createAppointment, bringAllArtists } from "../../Services/apiCalls";
+import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { CustomInput } from "../../Components/CustomInput/CustomInput";
-import { jwtDecode } from "jwt-decode";
-import { Form, Button } from "react-bootstrap";
+import { DeleteAppointment, bringAllAppointments } from "../../Services/apiCalls";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import "./AllAppointments.css";
 
-export const Appointments = () => {
+export const AllAppointments = () => {
+  const [appointments, setAppointments] = useState([]);
   const userRdxData = useSelector(userData);
-  const myId = userRdxData.credentials.userData.userId;
-  const [newAppointment, setNewAppointment] = useState({
-    user_id: myId,
-    artist_id: "",
-    date: "",
-    time: "",
-  });
-  const [artists, setArtists] = useState([]);
-  
+  const token = userRdxData.credentials.token;
+
   useEffect(() => {
-    if (artists.length === 0) {
-      bringAllArtists().then((arts) => {
-        console.log("Artists:", arts);
-        setArtists(arts);
-      });
-    }
-  }, []);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const inputHandler = (event) => {
-    setNewAppointment((prevState) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
-  const buttonHandler = () => {
-    const token = userRdxData.credentials.token;
-    if (!token) {
-      return;
-    }
-
-    createAppointment(token, newAppointment)
-      .then((res) => {
-        console.log(res);
-        const decodedToken = jwtDecode(token);
-        const data = {
-          token: token,
-          userData: decodedToken,
-        };
-
-
-        setTimeout(() => {
-          navigate("/profile");
+    if (appointments.length === 0) {
+      bringAllAppointments(token)
+        .then((res) => {
+          setAppointments(res.results);
+        })
+        .catch((error) => {
+          console.error("Error fetching appointments:", error);
         });
-      })
-      .catch((err) => {
-        console.error("Ha ocurrido un error", err);
-      });
+    }
+  }, [appointments, token]);
+
+  const removeButtonHandler = (id) => {
+    DeleteAppointment(token, id).then(() => {
+      setAppointments(appointments.filter((appointment) => appointment.id !== id));
+    });
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-6">
-          <Form className="mt-5">
-            <Form.Group controlId="artist_id">
-              <Form.Label>Select your Artist:</Form.Label>
-              <Form.Control
-                as="select"
-                name="artist_id"
-                value={newAppointment.artist_id}
-                onChange={inputHandler}
-              >
-                <option value="">Select an artist</option>
-                {artists.map((artist) => (
-                  <option key={artist.id} value={artist.id}>
-                    {artist.name}
-                  </option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="date">
-              <Form.Label>Date:</Form.Label>
-              <Form.Control
-                type="date"
-                name="date"
-                value={newAppointment.date}
-                onChange={inputHandler}
-              />
-            </Form.Group>
-            <Form.Group controlId="time">
-              <Form.Label>Time:</Form.Label>
-              <Form.Control
-                type="time"
-                name="time"
-                value={newAppointment.time}
-                onChange={inputHandler}
-              />
-            </Form.Group>
-
-            <Button variant="primary" onClick={buttonHandler}>
-              Confirm
-            </Button>
-          </Form>
-        </div>
-      </div>
-    </div>
+    <Container>
+      <h1 className="text-center mt-5 mb-4">All Appointments</h1>
+      <Row xs={1} md={2} lg={3} className="g-4">
+        {appointments && appointments.length > 0 ? (
+          appointments.map((appointment) => (
+            <Col key={`${appointment.id}-${appointment.date}-${appointment.time}`}>
+              <Card className="shadow-sm appointment-card" id="custom-card">
+                <Card.Body>
+                  <Card.Title className="text-center fs-5">Artist: {appointment.artist_name}</Card.Title>
+                  <hr />
+                  <div className="text-center">
+                    <p><strong>Date:</strong> {appointment.date}</p>
+                    <p><strong>Time:</strong> {appointment.time}</p>
+                    <p><strong>Customer:</strong> {appointment.user_name} {appointment.user_last_name}</p>
+                  </div>
+                  <Button variant="danger" size="sm" onClick={() => removeButtonHandler(appointment.id)}>Delete</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))
+        ) : (
+          <Col>
+            <p className="text-center">No appointments available.</p>
+          </Col>
+        )}
+      </Row>
+    </Container>
   );
 };

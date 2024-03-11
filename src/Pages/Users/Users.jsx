@@ -26,7 +26,7 @@ export const Users = () => {
   console.log(users);
   return (
     <div className="container">
-      <h1>Meet the team</h1>
+        <h1 className="text-center mt-5 mb-4">All users</h1>
       <div className="row">
         {users && users.length > 0 ? (
           users.map((user) => (
