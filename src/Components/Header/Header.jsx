@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, userData } from "../../Pages/userSlice";
+import { logout, userData } from "../../Pages/userSilce";
 import { useEffect } from "react";
 
 export const Header = () => {
@@ -33,7 +33,7 @@ export const Header = () => {
     >
       <Container className="container">
         <Navbar.Brand href="/" className="ms-auto">
-          Tattooink
+          BackendTattooINK
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -49,9 +49,7 @@ export const Header = () => {
               ) : decoded.userRoles === "super_admin" ? (
                 <>
                   <NavDropdown.Item href="profile">Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="users">
-                    Users
-                  </NavDropdown.Item>
+                  <NavDropdown.Item href="users">Users</NavDropdown.Item>
                   <NavDropdown.Item href="allappointments">
                     all appointments
                   </NavDropdown.Item>

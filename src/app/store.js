@@ -3,13 +3,13 @@ import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { thunk } from "redux-thunk";
-import userSlice from '../pages/userSlice';
-import userDetailSlice from "../pages/userDetailSlice";
+import { userSlice } from "../Pages/userSilce";
+import { userDetailSlice } from "../Pages/userDetailSilce";
 
 
-const reducers = combineReducers({
+const reducers = combineReducers ({
   user: userSlice,
-  userDetails: userDetailSlice
+  userDetails: userDetailSlice,
 });
 
 const persistConfig = {

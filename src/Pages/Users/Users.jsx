@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { bringAllUsers, removeUser } from "../../Services/apiCalls";
 import { useSelector } from "react-redux";
 import { Button, Card } from "react-bootstrap";
-import { userData } from "../userSlice";
+import { userData } from "../userSilce";
 
 export const Users = () => {
   const [users, setUsers] = useState([]);

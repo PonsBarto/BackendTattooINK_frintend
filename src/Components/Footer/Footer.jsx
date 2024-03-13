@@ -8,12 +8,12 @@ export const Footer = () => {
       <Container>
         <Row>
           <Col md={4}>
-            <h3>Contact Us</h3>
-            <p>Email: info@tattooink.com</p>
-            <p>Phone: +34 999 88 77 99</p>
+            <h5>Contact</h5>
+            <p>Email: info@backendtattooink.com</p>
+            <p>Phone: +34 971 48 01 53</p>
           </Col>
           <Col md={4}>
-            <h3>Follow Us</h3>
+            <h5>Follow</h5>
             <p>Stay connected with us on social media</p>
             <div className="social-icons">
               <a href="#"><i className="bi bi-instagram"></i></a>
@@ -22,7 +22,7 @@ export const Footer = () => {
             </div>
           </Col>
           <Col md={4}>
-            <h3>Quick Links</h3>
+            <h5>Quick Links</h5>
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">About Us</a></li>
@@ -35,7 +35,7 @@ export const Footer = () => {
       </Container>
       <div className="footer-bottom">
         <Container>
-          <p>&copy; 2024 Tattoo Ink. All rights reserved.</p>
+          <p>&copy; 2024 Backend Tattoo Ink. All rights reserved.</p>
         </Container>
       </div>
     </footer>

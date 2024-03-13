@@ -3,7 +3,7 @@ import { CustomInput } from "../../Components/CustomInput/CustomInput";
 import { userLogin } from "../../Services/apiCalls";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { login, userData } from "../userSlice";
+import { login, userData } from "../userSilce";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./Login.css";
@@ -49,7 +49,7 @@ export const Login = () => {
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
           <div className="logInBox">
-            <h1>Welcome to tattooink</h1>
+            <h1>Welcome to Backend Tattoo INK</h1>
             <h2>Log In</h2>
             <Form>
               <Form.Group controlId="formBasicEmail">
