@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { login, userData } from "../userSilce";
+import { login, userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { userSignUp, userLogin } from "../../Services/apiCalls";
-import "./Register.css"
+import "./Register.css";
 
 export const Register = () => {
   const [signUpData, setSignUpData] = useState({
@@ -15,7 +15,9 @@ export const Register = () => {
     email: "",
     password: "",
     phone_number: "",
+    photo: "",
   });
+  const [showError, setShowError] = useState(false); 
 
   const inputHandler = (event) => {
     setSignUpData((prevState) => ({
@@ -30,6 +32,18 @@ export const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // verificar si estan completados los campos
+    if (
+      !signUpData.name ||
+      !signUpData.last_name ||
+      !signUpData.address ||
+      !signUpData.email ||
+      !signUpData.password ||
+      !signUpData.phone_number
+    ) {
+      setShowError(true); // muestra el mensaje d error
+      return;
+    }
     try {
       await userSignUp(signUpData);
       const credentials = {
@@ -126,11 +140,31 @@ export const Register = () => {
               required
             />
           </Form.Group>
+          <Form.Group controlId="formphoto">
+            <Form.Label>Phone Number</Form.Label>
+            <Form.Control
+              type="link"
+              placeholder="Enter your photo"
+              name="photo"
+              value={signUpData.photo}
+              onChange={inputHandler}
+              required
+            />
+          </Form.Group>
+          {/* mensaje de error si no han compltado todos los campos */}
+          {showError && (
+            <Alert variant="danger" onClose={() => setShowError(false)} dismissible>
+              Please fill in all fields
+            </Alert>
+          )}
+
           <Button variant="primary" type="submit" className="w-100">
             Register
           </Button>
         </Form>
-        <p className="mt-3">Already have an account? <a href="/login">login</a></p>
+        <p className="mt-3">
+          Already have an account? <a href="/login">login</a>
+        </p>
       </div>
     </Container>
   );

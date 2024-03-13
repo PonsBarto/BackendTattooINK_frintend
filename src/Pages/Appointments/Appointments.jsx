@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Appointments.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createAppointment, bringAllArtists } from "../../Services/apiCalls"; // 
+import { createAppointment, bringAllArtists } from "../../Services/apiCalls";
 import { userData } from "../userSilce";
 import { CustomInput } from "../../Components/CustomInput/CustomInput";
 import { jwtDecode } from "jwt-decode";

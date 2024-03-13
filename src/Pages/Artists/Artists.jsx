@@ -8,7 +8,7 @@ export const Artists = () => {
   useEffect(() => {
     if (artists.length === 0) {
       bringAllArtists().then((data) => {
-        setArtists(data);
+        setArtists(data); 
       });
     }
   }, []);
@@ -21,7 +21,11 @@ export const Artists = () => {
           artists.map((artist) => {
             return (
               <div key={artist.id} className="artist-card">
-                <img src={artist.photo} alt={artist.name} className="artist-img" />
+                <img
+                  src={artist.photo}
+                  alt={artist.name}
+                  className="artist-img"
+                />
                 <div className="artist-info">
                   <p className="artist-name">{artist.name}</p>
                 </div>

@@ -3,9 +3,9 @@ import { CustomInput } from "../../Components/CustomInput/CustomInput";
 import { userLogin } from "../../Services/apiCalls";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { login, userData } from "../userSilce";
+import { login, userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./Login.css";
 
 export const Login = () => {
@@ -13,6 +13,7 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [loginError, setLoginError] = useState(false); 
 
   const dispatch = useDispatch();
   const userRdxData = useSelector(userData);
@@ -29,7 +30,8 @@ export const Login = () => {
     userLogin(credentials)
       .then((token) => {
         if (!token) {
-          return null;
+          setLoginError(true); 
+          return;
         }
         const decodedToken = jwtDecode(token);
         const data = {
@@ -41,7 +43,10 @@ export const Login = () => {
           navigate("/profile");
         });
       })
-      .catch((err) => console.error("Ha ocurrido un error", err));
+      .catch((err) => {
+        console.error("Ha ocurrido un error", err);
+        setLoginError(true); 
+      });
   };
 
   return (
@@ -49,7 +54,7 @@ export const Login = () => {
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
           <div className="logInBox">
-            <h1>Welcome to Backend Tattoo INK</h1>
+          <h1>Welcome to Backend Tattoo INK</h1>
             <h2>Log In</h2>
             <Form>
               <Form.Group controlId="formBasicEmail">
@@ -74,7 +79,14 @@ export const Login = () => {
                 Log in
               </Button>
             </Form>
-            <p className="mt-3">Don't have an account? <a href="/register">Sign up</a></p>
+            {loginError && ( 
+              <Alert variant="danger" className="mt-3">
+                Invalid email or password. Please try again.
+              </Alert>
+            )}
+            <p className="mt-3">
+              Don't have an account? <a href="/register">Sign up</a>
+            </p>
           </div>
         </Col>
       </Row>

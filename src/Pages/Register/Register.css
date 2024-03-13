@@ -1,23 +1,12 @@
-/* .requiredFields {
-    width: 70%;
-    height:70%;
-    background-color: rgb(201, 75, 75);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
-
 #signUpBox {
-    background-color: #101010!important;
-    color: #a4a4a4;
-    width: 48vw;
-    margin: auto;
+  background-color: #101010!important;
+  color: #a4a4a4; 
+  width: 48vw;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  #signUpBox {
+    width: 90%; 
   }
-  
- 
-  @media (max-width: 768px) {
-    #signUpBox {
-      width: 90%;
-    }
-  }
+}

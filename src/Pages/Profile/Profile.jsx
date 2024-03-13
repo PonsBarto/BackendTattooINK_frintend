@@ -8,7 +8,7 @@ import {
 } from "../../Services/apiCalls";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { userData } from "../userSilce";
+import { userData } from "../userSlice";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 export const Profile = () => {
@@ -50,7 +50,7 @@ export const Profile = () => {
         .then((updatedProfile) => {
           setProfileData(updatedProfile);
           setEditMode(false);
-          window.location.reload(); // Recargar la página después de actualizar el perfil
+          window.location.reload(); 
         })
         .catch((error) => {
           console.error("Error updating profile:", error);
@@ -78,7 +78,7 @@ export const Profile = () => {
         const updatedAppointments = [...myAppointments];
         updatedAppointments[index] = { ...updatedAppointment, editable: false };
         setMyAppointments(updatedAppointments);
-        window.location.reload(); // Recargar la página después de guardar el nuevo appointment
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error updating appointment:", error);
@@ -108,21 +108,10 @@ export const Profile = () => {
               <Card.Title className="profile-card-title">
                 Welcome {profileData.name} {profileData.last_name}
               </Card.Title>{" "}
-              {/* Aplica la clase CSS al título */}
               <Row className="justify-content-center">
-                {/* Lado Izquierdo: Imagen */}
-                {/* <Col md={5} className="mt-md-4 text-center mx-auto">
-                  <img
-                    src={profileData.photo}
-                    className="img-fluid"
-                    alt="Imagen de perfil"
-                  />
-                </Col> */}
-                {/* Lado Derecho: Detalles del perfil */}
                 <Col md={7} className="mt-md-4">
                   <Card className="profile-card">
                     {" "}
-                    {/* Aplica la clase CSS al componente Card */}
                     <Card.Body>
                       <Col md={5} className="mt-md-4 text-center mx-auto">
                         <img
@@ -216,7 +205,7 @@ export const Profile = () => {
           <p>Cargando datos de perfil...</p>
         )}{" "}
       </div>
-      {/* Mostrar los appointments en un cuadro aparte */}
+    {/* appointments card */}
       {myAppointments.length > 0 && (
         <Container className="mt-5">
           <h3 className="text-center mb-4">Next Sessions</h3>
@@ -276,7 +265,7 @@ export const Profile = () => {
                       {appointment.editable ? "Save" : "Reschedule"}
                     </Button>
                     <Button
-                      variant="danger"
+                      variant="danger" 
                       onClick={() => cancelButtonHandler(appointment.id)}
                     >
                       Cancel
