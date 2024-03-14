@@ -3,7 +3,7 @@ import "./Appointments.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createAppointment, bringAllArtists } from "../../Services/apiCalls";
-import { userData } from "../userSilce";
+import { userData } from "../userSlice";
 import { CustomInput } from "../../Components/CustomInput/CustomInput";
 import { jwtDecode } from "jwt-decode";
 import { Form, Button } from "react-bootstrap";

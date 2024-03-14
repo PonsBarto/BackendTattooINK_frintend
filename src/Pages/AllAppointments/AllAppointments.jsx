@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { userData } from "../userSilce";
+import { userData } from "../userSlice";
 import { DeleteAppointment, bringAllAppointments } from "../../Services/apiCalls";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "./AllAppointments.css";

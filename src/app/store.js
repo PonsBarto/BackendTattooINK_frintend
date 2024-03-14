@@ -3,8 +3,8 @@ import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { thunk } from "redux-thunk";
-import { userDetailSlice } from "../Pages/userDetailSilce";
-import { userSlice } from "../Pages/userSilce";
+import { userDetailSlice } from "../Pages/userDetailSlice";
+import userSlice from "../Pages/userSlice";
 
 
 

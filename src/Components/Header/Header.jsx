@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, userData, userSlice } from "../../Pages/userSilce";
+import { logout, userData, userSlice } from "../../Pages/userSlice";
 import { useEffect } from "react";
 
 export const Header = () => {

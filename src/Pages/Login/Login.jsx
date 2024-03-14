@@ -3,7 +3,7 @@ import { CustomInput } from "../../Components/CustomInput/CustomInput";
 import { userLogin } from "../../Services/apiCalls";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { login, userData } from "../userSilce";
+import { login, userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./Login.css";

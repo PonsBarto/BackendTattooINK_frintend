@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { login, userData } from "../userSilce";
+import { login, userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { userSignUp, userLogin } from "../../Services/apiCalls";

@@ -8,7 +8,7 @@ import {
 } from "../../Services/apiCalls";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { userData } from "../userSilce";
+import { userData } from "../userSlice";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 export const Profile = () => {
